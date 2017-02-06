@@ -1,0 +1,32 @@
+<div  ng-controller="DefaultController as giphy">
+  <div class="row">
+    <div class="col-md-6">
+      <label>Search</label>
+      <input type="text" ng-model="giphy.search"/>
+    <button  class="btn btn-info" type="submit" ng-click="giphy.searchGiphy()">Search!</button>
+    </div>
+    <div class="col-md-6" id="displaygiphy">
+        <img class="img-responsive" ng-show="giphy.imageUrl" ng-src="{{giphy.imageUrl}}"/>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="col-md-6">
+      <button  class="btn btn-info" ng-click="giphy.randomGiphy()">Random</button>
+    </div>
+    <div class="col-md-6">
+      <textarea class="form-control" type="text" name="task" ng-model='giphy.comment' >Comment</textarea>
+      <button class="btn btn-info" type="submit" ng-click='giphy.favoriteGiphy()'>Favorite This gif</button>
+    </div>
+  </div>
+<!--
+  <div class="row">
+    <div class="col-md-6">
+      <ul >
+        <li  ng-repeat="individualGiphy in giphy.giphyList">
+          <a href="{{individualGiphy.images.original.url}}">{{individualGiphy.id}}</a>
+        </li>
+      </ul>
+    </div>
+  </div> -->
+</div>
