@@ -63,4 +63,15 @@ app.service('giphyService',function($http){
 
   } // end of removeGiphy function
 
+
+  this.getTotalFavorites=function(){
+    return $http.get(localhosturl+'/totalFavorites', {
+    }).then(function(response) {
+      return response.data[0].count;
+    }).catch(function(err){
+      console.log('error getting data', err);
+    })
+
+  }// end of getTotalFavorites function
+
 });

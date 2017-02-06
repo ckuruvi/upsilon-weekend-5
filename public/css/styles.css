@@ -6,3 +6,8 @@ img{
   max-height: 200px;
   max-width: 200px;
 }
+
+textarea{
+   max-width: 250px;
+   max-height: 30px;
+}

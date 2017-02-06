@@ -27,6 +27,8 @@ app.controller('DefaultController', function(giphyService) {
   // randomGiphy function call for initial page loading
   ctrl.randomGiphy();
 
+
+
   // function handles user search for Giphys
   ctrl.searchGiphy=function(){
     giphyService.getSearchGiphy(ctrl.search).then(function(giphyObject){
@@ -40,8 +42,18 @@ app.controller('DefaultController', function(giphyService) {
     //  console.log('inside favoriteGiphy function',ctrl.comment,ctrl.imageUrl);
     giphyService.saveFavoriteGiphy(ctrl.comment,ctrl.imageUrl).then(function(response){
       //  console.log('inside saveFavoriteGiphy .then', response);
+      ctrl.totalFavorites();
     });
   }
+
+  ctrl.totalFavorites=function(){
+    giphyService.getTotalFavorites().then(function(num){
+      ctrl.totalFavoritesVar=num;
+    })
+  }
+
+  // function to get total number of favorites from local database
+  ctrl.totalFavorites();
 
 });
 

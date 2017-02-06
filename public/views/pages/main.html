@@ -1,22 +1,27 @@
 <div  ng-controller="DefaultController as giphy">
   <div class="row">
-    <div class="col-md-6">
-      <label>Search</label>
-      <input type="text" ng-model="giphy.search"/>
-    <button  class="btn btn-info" type="submit" ng-click="giphy.searchGiphy()">Search!</button>
-    </div>
     <div class="col-md-6" >
-        <img class="img-responsive" ng-show="giphy.imageUrl" ng-src="{{giphy.imageUrl}}"/>
+        <img class="img-responsive center-block" ng-show="giphy.imageUrl" ng-src="{{giphy.imageUrl}}"/>
     </div>
-  </div>
+    <div class="col-md-4 center-block">
+      <label>Search Text</label>
+      <input type="text" ng-model="giphy.search"/>
+    <button  class="btn btn-info btn-sm" type="submit" ng-click="giphy.searchGiphy()">Search!</button>
+    </div>
+    <div class="col-md-2">
+      <button  class="btn btn-info btn-sm center-block" ng-click="giphy.randomGiphy()">Random</button>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-md-offset-2 col-md-2 center-block">
+        <button class="btn btn-info btn-sm" type="submit" ng-click='giphy.favoriteGiphy()'>Favorite This gif</button>
+      </div>
+        <div class="col-md-4">
+      <textarea class="form-control" type="text" name="task" ng-model="giphy.comment" >Comment</textarea>
+    </div>
+    <div class="col-md-4">
+      <span>Favourites:{{giphy.totalFavoritesVar}}</span>
+    </div>
 
-    <div class="row">
-      <div class="col-md-6">
-      <button  class="btn btn-info" ng-click="giphy.randomGiphy()">Random</button>
-    </div>
-    <div class="col-md-6">
-      <textarea class="form-control" type="text" name="task" ng-model='giphy.comment' >Comment</textarea>
-      <button class="btn btn-info" type="submit" ng-click='giphy.favoriteGiphy()'>Favorite This gif</button>
-    </div>
+
   </div>
 </div>
