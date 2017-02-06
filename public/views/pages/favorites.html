@@ -2,5 +2,23 @@
 <div class="FavoritesController as favCtrl">
 
 
-<h1>Favorites Page</h1>
+<h1>Favorites Giphys</h1>
+
+<table class="table table-bordered table-condensed table-striped text-center">
+     <thead >
+       <tr class="success">
+       <th class="col-md-4 text-center">Giphy</th>
+       <th class="col-md-2 text-center">Comments</th>
+       <th class="col-md-2 text-center">Delete</th>
+     </tr>
+     </thead>
+     <tbody id="taskList">
+       <tr ng-repeat="giphyObj in favCtrl.giphyList">
+        <td><img class="img-responsive" ng-show="giphyObj.url" ng-src="{{giphyObj.url}}"/></td>
+        <td>{{giphyObj.description}}</td>
+        <td><button class="btn btn-warning" ng-click="favCtrl.removeGiphy(giphyObj.id)"> Delete</button></td>
+      </tr>
+     </tbody>
+
+   </table>
 </div>

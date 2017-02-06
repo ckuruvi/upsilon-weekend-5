@@ -23,10 +23,7 @@ app.controller('DefaultController', function(giphyService) {
 
 
   var ctrl = this;
-  giphyService.getRandomGiphy().then(function(image_url){
-    console.log('inside success from randomGiphy function call');
-    ctrl.imageUrl=image_url;
-  });
+
   // function handles button click for random Giphy search
   ctrl.randomGiphy=function(){
     giphyService.getRandomGiphy().then(function(image_url){
@@ -34,6 +31,7 @@ app.controller('DefaultController', function(giphyService) {
       ctrl.imageUrl=image_url;
     });
   }
+  ctrl.randomGiphy();
 
  // function handles user search for Giphys
   ctrl.searchGiphy=function(){
@@ -55,10 +53,21 @@ app.controller('DefaultController', function(giphyService) {
 
 app.controller('FavoritesController',function(giphyService){
 
-
+  var favCtrl=this;
   console.log('FavoritesController loaded!');
+  favCtrl.favoriteGiphys=function(){
  giphyService.getFavoriteGiphys().then(function(giphyList){
    console.log('inside getFavoriteGiphy .then', giphyList);
+   favCtrl.giphyList=giphyList;
+   console.log('faveCtrl.giphyList::',favCtrl.giphyList);
  })
+}
+favCtrl.favoriteGiphys();
 
-})
+ favCtrl.removeGiphy=function(id){
+   console.log("inside removeGiphy function",id);
+ giphyService.removeGiphy(id).then(function(){
+     favCtrl.favoriteGiphys();
+ })
+}
+});

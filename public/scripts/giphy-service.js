@@ -67,4 +67,17 @@ this.getFavoriteGiphys = function() {
   })
 } // end of getFavoriteGiphys function
 
+
+this.removeGiphy=function(id){
+  console.log('inside removeGiphy function');
+  return $http.delete(localhosturl+'/'+id, {
+  }).then(function(response) {
+   console.log('delete from db::',response);
+    return response;
+  }).catch(function(err){
+    console.log('error getting data', err);
+  })
+
+} // end of removeGiphy function
+
 });

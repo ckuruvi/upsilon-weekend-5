@@ -59,4 +59,31 @@ router.post('/',function(req,res){
   });
 });//end of post
 
+
+router.delete('/:id',function(req,res){
+      pool.connect(function(err,client,done){
+        if(err){
+          console.log('Error connecting to DB',err);
+          res.sendStatus(500);
+          done();
+        } else {
+          console.log('paramId ::'+req.params.id);
+          client.query(
+            'DELETE FROM giphy WHERE id=$1;',
+            [req.params.id],
+            function(err,result){
+              done();
+              if(err){
+                console.log('Error querying DB',err);
+                res.sendStatus(500);
+              } else {
+                console.log('Posted info from DB',result.rows);
+                res.send(result.rows);
+              }
+            });
+          }
+        });
+      });//end of delete
+
+      
 module.exports = router;
